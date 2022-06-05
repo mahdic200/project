@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "vazir";
+    src: url("../fonts/Vazir/vazir.eot") format("eot");
+    src: url("../fonts/Vazir/vazir.ttf") format("ttf");
+    src: url("../fonts/Vazir/vazir.woff") format("woff");
+    src: url("../fonts/Vazir/vazir.woff2") format("woff2");
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "vazir";
+    background-color: #151729;
+    height: 100vh;
+    background-image: url("../images/p404.png");
+}
+
+
+p , h1 {
+    user-select: none;
+    direction: rtl;
+}
+
+
+div.pedar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.pedar div.farzand {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+div.pedar div.farzand h1 {
+    font-size: 200px;
+    line-height: 1;
+}
+
+div.pedar div.farzand p.p1 {
+    font-size: 40px;
+}
+div.pedar div.farzand p.p2 {
+    font-size: 22px;
+}
+div.pedar div.farzand a {
+    margin-top: 5vw;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: blue;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    transition: all 120ms;
+    transition: active 50ms;
+}
+
+div.pedar div.farzand a:hover {
+    background-color: rgba(0, 0, 255, 0.692);
+}
+div.pedar div.farzand a:active {
+    background-color: cyan;
+    color: blue;
+}
+
+
+.pedar .farzand {}
