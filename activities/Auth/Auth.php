@@ -139,6 +139,7 @@ class Auth
             }
         }
     }
+
     public function activation($verifyToken) 
     {
         $db = new DataBase();
@@ -153,10 +154,12 @@ class Auth
             $this->redirect("login");
         }
     }
+
     public function login() 
     {
         require_once BASE_PATH . "/template/auth/login.php";
     }
+
     public function checkLogin($request)
     {
         if (empty($request["email"]) || empty($request["password"])) {
@@ -189,6 +192,7 @@ class Auth
         }
         
     }
+
     public function checkAdmin()
     {
         if (isset($_SESSION["user"]))
@@ -208,6 +212,7 @@ class Auth
             $this->redirect("home");
         }
     }
+
     public function logout()
     {
         if (isset($_SESSION["user"]))
@@ -217,10 +222,12 @@ class Auth
         }
         $this->redirect("home");
     }
+
     public function forgot()
     {
         require_once BASE_PATH . "/template/auth/forgot.php";
     }
+
     public function forgotMessage($username, $verifyToken) 
     {
         $message = '
@@ -231,6 +238,7 @@ class Auth
         
         return $message;
     }
+
     public function forgotRequest($request)
     {
         if(!empty($request["email"]))
