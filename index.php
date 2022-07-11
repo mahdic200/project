@@ -23,7 +23,8 @@ define('DB_PASSWORD', '');
 define("MAIL_HOST", "smtp.gmail.com");
 define("SMTP_AUTH", true);
 define("MAIL_USERNAME", "phpprojectmailer@gmail.com");
-define("MAIL_PASSWORD", "phpmailer1400");
+// define("MAIL_PASSWORD", "phpmailer1400"); //sthzuaoeeapxspps
+define("MAIL_PASSWORD", "sthzuaoeeapxspps");
 define("MAIL_PORT", 587);
 define("SENDER_MAIL", MAIL_USERNAME);
 define("SENDER_NAME", "دوره آنلاین پی اچ پی جامع");

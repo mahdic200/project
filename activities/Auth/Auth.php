@@ -232,8 +232,8 @@ class Auth
     {
         $message = '
         <h1>فعال سازی حساب کاربری</h1>
-        <p>'. $username .' برای فعال سازی حساب کاربری خودلطفا روی لینک زیر کلیک کنید</p>
-        <div><a href="'. url("activation/" . $verifyToken) .'">فعال سازی حساب</a></div>
+        <p>'. $username .' برای تغییر رمز عبور خودلطفا روی لینک زیر کلیک کنید</p>
+        <div><a href="'. url("reset-password-form/" . $verifyToken) .'">فعال سازی حساب</a></div>
         ';
         
         return $message;
@@ -241,7 +241,7 @@ class Auth
 
     public function forgotRequest($request)
     {
-        if(!empty($request["email"]))
+        if(empty($request["email"]))
         {
             flash("forgot_error", "لطفا ایمیل خود را وارد کنید");
             $this->redirectBack();
@@ -264,7 +264,16 @@ class Auth
             {
                 $randomToken = $this->random();
                 $forgotMessage = $this->forgotMessage($request["username"], $randomToken);
-                $result = $this->sendMail($request["email"], "فعال سازی حساب کاربری" , $activationMessage);
+                $result = $this->sendMail($request["email"], "بازیابی رمز عبور" , $forgotMessage);
+                if ($result) {
+                    $db->update('users', $user['id'], ['forgot_token', 'forgot_token_expire'], [$randomToken, date('Y-m-d H:i:s', strtotime('+15 minutes'))]);
+                    $this->redirect('login');
+                }
+                else
+                {
+                    flash('forgot_error', 'ارسال ایمیل با خطا مواجه شد');
+                    // $this->redirectBack();
+                }
             }
         }
     }
