@@ -263,16 +263,61 @@ class Auth
             else
             {
                 $randomToken = $this->random();
-                $forgotMessage = $this->forgotMessage($request["username"], $randomToken);
+                $forgotMessage = $this->forgotMessage($user["username"], $randomToken);
                 $result = $this->sendMail($request["email"], "بازیابی رمز عبور" , $forgotMessage);
                 if ($result) {
+                    date_default_timezone_set('Asia/Tehran');
                     $db->update('users', $user['id'], ['forgot_token', 'forgot_token_expire'], [$randomToken, date('Y-m-d H:i:s', strtotime('+15 minutes'))]);
                     $this->redirect('login');
                 }
                 else
                 {
                     flash('forgot_error', 'ارسال ایمیل با خطا مواجه شد');
-                    // $this->redirectBack();
+                    $this->redirectBack();
+                }
+            }
+        }
+    }
+
+    public function resetPasswordView($forgot_token)
+    {
+        require_once BASE_PATH . "/template/auth/reset-password.php";
+    }
+
+    public function resetPassword($request, $forgot_token)
+    {
+        if (!isset($request['password']) || strlen($request['password']) < 8) {
+            flash('reset_error', "رمز عبور باید حداقل دارای 8 کاراکتر باشد");
+            $this->redirectBack();
+        }
+        else
+        {
+            $db = new DataBase();
+            $user = $db->select("SELECT * FROM `users` WHERE forgot_token = ?", [$forgot_token])->fetch();
+            if ($user == null)
+            {
+                flash('reset_error', 'کاربر یافت نشد');
+                $this->redirectBack();
+            }
+            else
+            {
+                date_default_timezone_set('Asia/Tehran');
+                if ($user['forgot_token_expire'] < date('Y-m-d H:i:s'))
+                {
+                    flash('reset_error', "تاریخ انقضای ایمیل به اتمام رسیده است");
+                    $this->redirectBack();
+                }
+                else
+                {
+                    $password = $this->hash($request['password']);
+                    $result = $db->update('users', $user['id'], ['password'], [$password]);
+                    if ($result) 
+                    {
+                        flash('reset_error', "رمز عبور با موفقیت تغییر کرد");
+                    }
+                    var_dump($user['forgot_token_expire']);
+                    var_dump(date('Y-m-d H:i:s'));
+                    $this->redirectBack();
                 }
             }
         }
