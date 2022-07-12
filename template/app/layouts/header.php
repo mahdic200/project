@@ -5,17 +5,17 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
+    <link rel="shortcut icon" href="<?= $setting['icon'] ?>">
     <!-- Author Meta -->
     <meta name="author" content="colorlib">
     <!-- Meta Description -->
-    <meta name="description" content="">
+    <meta name="description" content="<?= $setting['description'] ?>">
     <!-- Meta Keyword -->
-    <meta name="keywords" content="">
+    <meta name="keywords" content="<?= $setting['keywords'] ?>">
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Magazine</title>
+    <title><?= $setting['title'] ?></title>
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
     <!--
 		CSS
@@ -72,11 +72,16 @@
             <div class="row align-items-center justify-content-between">
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li class="menu-active"><a href="index.html">منو ۱</a></li>
-                        <li><a href="archive.html">منو ۲</a></li>
-                        <li><a href="category.html">منو ۳</a></li>
-                        <li class="menu-has-children"><a href="">منو ۴</a>
+                        <?php 
+                            foreach($menus as $menu) 
+                            {
+                        ?>
+                        <li class="menu-active">
+                            <a href="<?= $menu['url'] ?>">
+                                <?= $menu['name'] ?>
+                            </a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </nav>
                 <!-- #nav-menu-container -->
@@ -84,10 +89,10 @@
                     <form class="Search">
                         <input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="جستجو">
                         <label for="Search-box" class="Search-box-label">
-								<span class="lnr lnr-magnifier"></span>
-							</label>
+                            <span class="lnr lnr-magnifier"></span>
+                        </label>
                         <span class="Search-close">
-								<span class="lnr lnr-cross"></span>
+                            <span class="lnr lnr-cross"></span>
                         </span>
                     </form>
                 </div>

@@ -7,70 +7,147 @@
     <section class="top-post-area pt-10">
         <div class="container no-padding">
             <div class="row small-gutters">
-                <div class="col-lg-8 top-post-left">
-                    <div class="feature-image-thumb relative">
-                        <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="img/top-post1.jpg" alt="">
-                    </div>
-                    <div class="top-post-details">
-                        <ul class="tags">
-                            <li><a href="#">دسته بندی</a></li>
-                        </ul>
-                        <a href="image-post.html">
-                            <h3>عنوان خبر</h3>
-                        </a>
-                        <ul class="meta">
-                            <li><a href="#"><span class="lnr lnr-user"></span>ادمین</a></li>
-                            <li><a href="#">۱۳۳۹/۲/۴<span class="lnr lnr-calendar-full"></span></a></li>
-                            <li><a href="#">۵<span class="lnr lnr-bubble"></span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 top-post-right">
-                    <div class="single-top-post">
+                <?php if (isset($topSelectedPosts[0])) { ?>
+                    <div class="col-lg-8 top-post-left">
                         <div class="feature-image-thumb relative">
                             <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/top-post2.jpg" alt="">
+                            <img class="img-fluid" src="<?= asset($topSelectedPosts[0]['image']) ?>" alt="">
                         </div>
                         <div class="top-post-details">
                             <ul class="tags">
-                                <li><a href="#">دسته بندی</a></li>
+                                <li>
+                                    <a href="#">
+                                        <?= $topSelectedPosts[0]['category'] ?>
+                                    </a>
+                                </li>
                             </ul>
                             <a href="image-post.html">
-                                <h4>عنوان</h4>
+                                <h3>
+                                    <?= $topSelectedPosts[0]['title'] ?>
+                                </h3>
                             </a>
                             <ul class="meta">
-                                <li><a href="#"><span class="lnr lnr-user"></span>ادمین</a></li>
-                                <li><a href="#">۱۳۳۹/۲/۴<span class="lnr lnr-calendar-full"></span></a></li>
-                                <li><a href="#"> ۱<span class="lnr lnr-bubble"></span></a></li>
+                                <li>
+                                    <a href="#">
+                                        <?= $topSelectedPosts[0]['username'] ?>
+                                        <span class="lnr lnr-user">
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <?= jalaliDate($topSelectedPosts[0]['created_at']) ?>
+                                        <span class="lnr lnr-calendar-full">
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <?= $topSelectedPosts[0]['comments_count'] ?>
+                                        <span class="lnr lnr-bubble">
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="single-top-post mt-10">
-                        <div class="feature-image-thumb relative">
-                            <div class="overlay overlay-bg"></div>
-                            <img class="img-fluid" src="img/top-post3.jpg" alt="">
+                <?php }
+                if (isset($topSelectedPosts[0])) { ?>
+                    <div class="col-lg-4 top-post-right">
+                        <div class="single-top-post">
+                            <div class="feature-image-thumb relative">
+                                <div class="overlay overlay-bg"></div>
+                                <img class="img-fluid" src="<?= asset($topSelectedPosts[1]['image']) ?>" alt="">
+                            </div>
+                            <div class="top-post-details">
+                                <ul class="tags">
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[1]['category'] ?>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <a href="image-post.html">
+                                    <h4>
+                                        <?= $topSelectedPosts[1]['title'] ?>
+                                    </h4>
+                                </a>
+                                <ul class="meta">
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[1]['username'] ?>
+                                            <span class="lnr lnr-user">
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <?= jalaliDate($topSelectedPosts[1]['created_at']) ?>
+                                            <span class="lnr lnr-calendar-full">
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[1]['comments_count'] ?>
+                                            <span class="lnr lnr-bubble">
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="top-post-details">
-                            <ul class="tags">
-                                <li><a href="#">دسته بندی</a></li>
-                            </ul>
-                            <a href="image-post.html">
-                                <h4>عنوان</h4>
-                            </a>
-                            <ul class="meta">
-                                <li><a href="#"><span class="lnr lnr-user"></span>ادمین</a></li>
-                                <li><a href="#">۱۳۳۹/۲/۴<span class="lnr lnr-calendar-full"></span></a></li>
-                                <li><a href="#">۵<span class="lnr lnr-bubble"></span></a></li>
-                            </ul>
+                        <div class="single-top-post mt-10">
+                            <div class="feature-image-thumb relative">
+                                <div class="overlay overlay-bg"></div>
+                                <img class="img-fluid" src="<?= url($topSelectedPosts[2]['image']) ?>" alt="">
+                            </div>
+                            <div class="top-post-details">
+                                <ul class="tags">
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[2]['category'] ?>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <a href="image-post.html">
+                                    <h4>
+                                        <?= $topSelectedPosts[2]['title'] ?>
+                                    </h4>
+                                </a>
+                                <ul class="meta">
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[2]['username'] ?>
+                                            <span class="lnr lnr-user">
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="#">
+                                            <?= jalaliDate($topSelectedPosts[2]['created_at']) ?>
+                                            <span class="lnr lnr-calendar-full">
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <?= $topSelectedPosts[2]['comments_count'] ?>
+                                            <span class="lnr lnr-bubble">
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="news-tracker-wrap">
-                        <h6><span>خبر فوری:</span> <a href="#">مربی تیم ایران اخراج شد</a></h6>
+                <?php }
+                if (isset($topSelectedPosts[0])) { ?>
+                    <div class="col-lg-12">
+                        <div class="news-tracker-wrap">
+                            <h6><span>خبر فوری:</span> <a href="#">مربی تیم ایران اخراج شد</a></h6>
+                        </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
