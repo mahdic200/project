@@ -92,7 +92,7 @@ class Post extends Admin
         // } else {
         //     $db->update("posts", $id, ["selected"], ["1"]);
         // }
-        $selectedStatus = ($post["selected"] == "0") ? "1" : "0";
+        $selectedStatus = ($post["selected"] == "1") ? "2" : "1";
         $db->update("posts", $id, ["selected"], [$selectedStatus]);
         $this->redirectBack();
     }
@@ -101,11 +101,11 @@ class Post extends Admin
     {
         $db = new DataBase();
         $post = $db->select("SELECT * FROM " . DB_NAME . "  .posts WHERE id = ?;", [$id])->fetch();
-        dd($post);
+        // dd($post);
         if (empty($post)) {
             $this->redirectBack();
         }
-        $breakStatus = ($post["breaking_news"] == "0") ? "1" : "0";
+        $breakStatus = ($post["breaking_news"] == "1") ? "2" : "1";
         $db->update("posts", $id, ["breaking_news"], [$breakStatus]);
         $this->redirectBack();
     }

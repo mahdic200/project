@@ -45,10 +45,10 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
                             <?= $post["view"] ?>
                         </td>
                         <td style="display: flex; flex-flow: column; align-items: center;">
-                            <?php if ($post["breaking_news"] != 0) { ?>
+                            <?php if ($post["breaking_news"] != 2) { ?>
                                 <span class="badge badge-success" style="margin: 5px 0;">#breaking_news</span>
                             <?php } ?>
-                            <?php if ($post["selected"] != 0) {  ?>
+                            <?php if ($post["selected"] != 2) {  ?>
                                 <span class="badge badge-dark">#editor_selected</span>
                             <?php } ?>
                         </td>

@@ -3478,3 +3478,18 @@ div.thumbnail_container .overlay-bg {
 .footer-area .footer-bottom .footer-social a:hover {
     background: #f6214b;
 }
+
+
+/* start sidebar-commentedposts-img style */
+.sidebar-commentedposts-img {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 2px gray;
+}
+.sidebar-commentedposts-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+/* end sidebar-commentedposts-img style */

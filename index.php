@@ -193,7 +193,7 @@ function flash($name, $value = NULL) {
 function dd($var) {
     echo "<pre>";
     var_dump($var);
-    // exit;
+    exit;
 }
 
 
