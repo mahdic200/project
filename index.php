@@ -6,6 +6,7 @@ use database\CreateDB;
 use database\DataBase;
 use Admin\Category;
 use Auth\Auth;
+use App\Home;
 
 //session start
 
@@ -41,7 +42,8 @@ require_once "./activities/Admin/Comment.php";
 require_once "./activities/Admin/Menu.php";
 require_once "./activities/Admin/Websetting.php";
 
-
+// home
+require_once "./activities/App/Home.php";
 
 
 // Auth
@@ -193,6 +195,8 @@ function dd($var) {
     var_dump($var);
     // exit;
 }
+
+
 // dashboard
 uri('admin', 'Admin\Dashboard', 'index');
 
@@ -272,6 +276,12 @@ uri("forgot/request", "Auth\Auth", "forgotRequest", "POST"); //reset-password-fo
 uri("reset-password-form/{forgot_token}", "Auth\Auth", 'resetPasswordView');
 uri("reset-password/{forgot_token}", "Auth\Auth", 'resetPassword', "POST");
 
+// home page
+uri('/', 'App\Home', 'index');
+uri('/home', 'App\Home', 'index');
+uri('show-post/{id}', 'App\Home', 'show');
+uri('show-category/{id}', 'App\Home', 'category');
+uri('comment-store/', 'App\Home', 'commentStore', 'POST');
 
 
 require_once BASE_PATH . "/error404/index.php";
