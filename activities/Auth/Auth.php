@@ -268,7 +268,8 @@ class Auth
                 if ($result) {
                     date_default_timezone_set('Asia/Tehran');
                     $db->update('users', $user['id'], ['forgot_token', 'forgot_token_expire'], [$randomToken, date('Y-m-d H:i:s', strtotime('+15 minutes'))]);
-                    $this->redirect('login');
+                    flash('forgot_error', "ایمیل بازیابی رمز عبور برای شما ارسال شد");
+                    $this->redirectBack();
                 }
                 else
                 {

@@ -46,7 +46,7 @@
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block pt-3 bg-sidebar sidebar px-0">
-                <a class="text-decoration-none d-block py-1 px-2 mt-1" href=""><i class="fa fa-home"></i> Home</a>
+                <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url('admin') ?>"><i class="fa fa-home"></i> Home</a>
                 <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url("admin/category") ?>"><i class="fa fa-clipboard-list"></i> Category</a>
                 <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url("admin/posts") ?>"><i class="fa fa-newspaper"></i> Post</a>
                 <a class="text-decoration-none d-block py-1 px-2 mt-1" href="<?= url("admin/banners") ?>"><i class="fa fa-image"></i> Banner</a>
