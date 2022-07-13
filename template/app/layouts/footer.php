@@ -32,14 +32,14 @@
             <div class="col-lg-4 col-md-6 single-footer-widget">
                 <h4>ایسنتاگرام</h4>
                 <ul class="instafeed d-flex flex-wrap">
-                    <li><img src="img/i1.jpg" alt=""></li>
-                    <li><img src="img/i2.jpg" alt=""></li>
-                    <li><img src="img/i3.jpg" alt=""></li>
-                    <li><img src="img/i4.jpg" alt=""></li>
-                    <li><img src="img/i5.jpg" alt=""></li>
-                    <li><img src="img/i6.jpg" alt=""></li>
-                    <li><img src="img/i7.jpg" alt=""></li>
-                    <li><img src="img/i8.jpg" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i1.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i2.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i3.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i4.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i5.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i6.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i7.jpg') ?>" alt=""></li>
+                    <li><img src="<?= asset('/public/footer-image/i8.jpg') ?>" alt=""></li>
                 </ul>
             </div>
         </div>
