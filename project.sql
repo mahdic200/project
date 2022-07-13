@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 03:25 PM
+-- Generation Time: Jul 13, 2022 at 06:34 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
@@ -35,6 +35,13 @@ CREATE TABLE `banners` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
+--
+-- Dumping data for table `banners`
+--
+
+INSERT INTO `banners` (`id`, `image`, `url`, `created_at`, `updated_at`) VALUES
+(8, 'public/banner-image/2022-07-13-18-26-05.jpeg', 'dc', '2022-07-13 20:54:35', '2022-07-13 20:56:05');
+
 -- --------------------------------------------------------
 
 --
@@ -53,9 +60,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'خبری', '2022-05-05 13:41:22', NULL),
-(2, 'سیاسی', '2022-05-05 13:41:29', NULL),
-(3, 'اقتصادی', '2022-05-05 13:41:35', NULL);
+(1, 'خبری', '2022-07-13 16:19:58', NULL),
+(2, 'سیاسی', '2022-07-13 16:20:11', NULL),
+(3, 'اقتصادی', '2022-07-13 16:20:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +102,8 @@ CREATE TABLE `menus` (
 INSERT INTO `menus` (`id`, `name`, `url`, `parent_id`, `created_at`, `updated_at`) VALUES
 (1, 'طراحی وب', 'link', NULL, '2022-05-05 14:25:49', NULL),
 (2, 'برنامه نویسی', 'link', NULL, '2022-05-05 14:26:17', NULL),
-(3, 'هک و امنیت', 'link', NULL, '2022-05-05 14:26:35', NULL);
+(3, 'هک و امنیت', 'link', NULL, '2022-05-05 14:26:35', NULL),
+(4, 'ورزشی', 'link', NULL, '2022-07-13 18:48:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,7 +133,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `summary`, `body`, `view`, `user_id`, `cat_id`, `image`, `status`, `selected`, `breaking_news`, `published_at`, `created_at`, `updated_at`) VALUES
-(2, 'ی پست جدید', '', '', 0, 1, 1, 'public/post-image/2022-07-13-15-23-55.png', 'disable', 2, 1, '2022-07-13 15:23:39', '2022-07-13 17:53:55', '2022-07-13 17:54:10');
+(9, 'nothing', '', '', 0, 1, 1, 'public/post-image/2022-07-13-18-32-31.jpeg', 'disable', 1, 1, '2022-07-13 13:28:03', '2022-07-13 20:58:25', '2022-07-13 21:02:31'),
+(10, 'new post', '', '', 0, 1, 1, 'public/post-image/2022-07-13-18-32-24.jpeg', 'disable', 1, 1, '2022-07-13 18:32:11', '2022-07-13 21:02:24', '2022-07-13 21:03:14'),
+(11, 'mahdi post', '', '', 0, 1, 3, 'public/post-image/2022-07-13-18-32-53.jpeg', 'disable', 1, 1, '2022-07-13 18:32:36', '2022-07-13 21:02:53', '2022-07-13 21:03:13');
 
 -- --------------------------------------------------------
 
@@ -149,7 +159,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `title`, `description`, `keywords`, `logo`, `icon`, `created_at`, `updated_at`) VALUES
-(1, 'new title', 'this is a test setting', 'setting , title , settings', 'link', 'link', '2022-05-05 14:24:29', '2022-05-05 14:25:38');
+(1, 'سایت خبری', 'this is a test setting', 'setting , title , settings', 'link', 'link', '2022-05-05 14:24:29', '2022-07-13 18:29:45');
 
 -- --------------------------------------------------------
 
@@ -238,7 +248,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -250,19 +260,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `setting`

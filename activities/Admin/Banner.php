@@ -8,9 +8,8 @@ class Banner extends Admin
 {
     public function index()
     {
-        $dbname = DB_NAME;
         $db = new DataBase();
-        $banners = $db->select("SELECT * FROM $dbname.banners");
+        $banners = $db->select("SELECT * FROM banners");
         require_once BASE_PATH . "/template/admin/banners/index.php";
     }
 
@@ -35,32 +34,43 @@ class Banner extends Admin
     public function edit($id)
     {
         $db = new DataBase();
-        $banner = $db->select("SELECT * FROM " . DB_NAME . "  .banners WHERE id = ?;", [$id])->fetch();
+        $banner = $db->select("SELECT * FROM banners WHERE id = ?;", [$id])->fetch();
         require_once BASE_PATH . "/template/admin/banners/edit.php";
     }
 
     public function update($request, $id)
     {
         $db = new DataBase();
+
         if ($request["image"]["tmp_name"] != null) {
-            $post = $db->select("SELECT * FROM " . DB_NAME . "  .banners WHERE id = ?;", [$id])->fetch();
-            $this->removeImage($post["image"]);
-            $request["image"] = $this->saveImage($request["image"], "banner-image");
+            $banner = $db->select("SELECT * FROM banners WHERE id = ?;", [$id])->fetch();
+            $this->removeImage($banner["image"]);
+                $request["image"] = $this->saveImage($request["image"], "banner-image");
         } else {
             unset($request["image"]);
         }
-        $db->update("banners", $id, array_keys($request), $request);
-        $this->redirect("admin/banners");
+        $isUpdated = $db->update("banners", $id, array_keys($request), $request);
+        if ($isUpdated) {
+            $this->redirect("admin/banners");
+        }
+        else
+        {
+            echo "update is not completed";
+        }
     }
 
     public function delete($id)
     {
         $db = new DataBase();
-        $banner = $db->select("SELECT * FROM " . DB_NAME . "  .banners WHERE id = ?;", [$id])->fetch();
+        $banner = $db->select("SELECT * FROM banners WHERE id = ?;", [$id])->fetch();
         $imageDelete = $this->removeImage($banner["image"]);
         if ($imageDelete) {
             $db->delete("banners", $id);
             $this->redirect("admin/banners");
+        }
+        else
+        {
+            echo "delete was not successful";
         }
     }
 }

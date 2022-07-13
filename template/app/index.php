@@ -7,7 +7,7 @@
     <section class="top-post-area pt-10">
         <div class="container no-padding">
             <div class="row small-gutters">
-                <?php 
+                <?php
                 if (isset($topSelectedPosts[0])) { ?>
                     <div class="col-lg-8 top-post-left">
                         <div class="feature-image-thumb relative">
@@ -17,7 +17,7 @@
                         <div class="top-post-details">
                             <ul class="tags">
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= url('show-category/' . $topSelectedPosts[0]['cat_id']) ?>">
                                         <?= $topSelectedPosts[0]['category'] ?>
                                     </a>
                                 </li>
@@ -64,7 +64,7 @@
                             <div class="top-post-details">
                                 <ul class="tags">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?= url('show-category/' . $topSelectedPosts[1]['cat_id']) ?>">
                                             <?= $topSelectedPosts[1]['category'] ?>
                                         </a>
                                     </li>
@@ -105,12 +105,12 @@
                         <div class="single-top-post mt-10">
                             <div class="feature-image-thumb relative">
                                 <div class="overlay overlay-bg"></div>
-                                <img class="img-fluid" src="<?= url($topSelectedPosts[2]['image']) ?>" alt="">
+                                <img class="img-fluid" src="<?= asset($topSelectedPosts[2]['image']) ?>" alt="">
                             </div>
                             <div class="top-post-details">
                                 <ul class="tags">
                                     <li>
-                                        <a href="#">
+                                        <a href="<?= url('show-category/' . $topSelectedPosts[2]['cat_id']) ?>">
                                             <?= $topSelectedPosts[2]['category'] ?>
                                         </a>
                                     </li>
@@ -153,7 +153,7 @@
                                     <span>
                                         خبر فوری:
                                     </span>
-                                    <a href="#">
+                                    <a href="<?= url('show-post/' . $breakingNews['id']) ?>">
                                         <?= $breakingNews['title'] ?>
                                     </a>
                                 </h6>
@@ -181,7 +181,7 @@
                                     </div>
                                     <ul class="tags">
                                         <li>
-                                            <a href="#">
+                                            <a href="<?= url('show-category/' . $lastPost['cat_id']) ?>">
                                                 <?= $lastPost['category'] ?>
                                             </a>
                                         </li>
@@ -247,7 +247,7 @@
                                     <div class="details">
                                         <ul class="tags">
                                             <li>
-                                                <a href="#">
+                                                <a href="<?= url('show-category/' . $popularPosts[0]['cat_id']) ?>">
                                                     <?= $popularPosts[0]['category'] ?>
                                                 </a>
                                             </li>
@@ -292,7 +292,7 @@
                                             </div>
                                             <ul class="tags">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="<?= url('show-category/' . $popularPosts[1]['cat_id']) ?>">
                                                         <?= $popularPosts[1]['category'] ?>
                                                     </a>
                                                 </li>
@@ -330,7 +330,7 @@
                                             </div>
                                             <ul class="tags">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="<?= url('show-category/' . $popularPosts[2]['cat_id']) ?>">
                                                         <?= $popularPosts[2]['category'] ?>
                                                     </a>
                                                 </li>
@@ -362,7 +362,7 @@
                                                 </li>
                                             </ul>
                                             <p class="excert">
-                                            <?= $popularPosts[2]['summary'] ?>
+                                                <?= $popularPosts[2]['summary'] ?>
                                         </div>
                                     </div>
                                 <?php } ?>

@@ -8,7 +8,7 @@
                     if (!empty($popularPosts)) {
                     foreach ($popularPosts as $popularPost) { ?>
                         <li>
-                            <a href="#">
+                            <a href="<?= url('show-post/' . $popularPost['id']) ?>">
                                 <?= $popularPost['title'] ?>
                             </a>
                         </li>

@@ -55,7 +55,7 @@ class Post extends Admin
         if ($request["cat_id"] != null) {
 
             if ($request["image"]["tmp_name"] != null) {
-                $post = $db->select("SELECT * FROM " . DB_NAME . "  .posts WHERE id = ?;", [$id])->fetch();
+                $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
                 $this->removeImage($post["image"]);
                 $request["image"] = $this->saveImage($request["image"], "post-image");
             } else {

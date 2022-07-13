@@ -13,7 +13,7 @@
                         </div>
                         <ul class="tags">
                             <li>
-                                <a href="#">
+                                <a href="<?= url('show-category/' . $topSelectedPosts[0]['cat_id']) ?>">
                                     <?= $topSelectedPosts[0]['category'] ?>
                                 </a>
                             </li>
