@@ -175,7 +175,7 @@ class Auth
                 if (password_verify($request["password"] , $user["password"]) && $user["is_active"] == 1)
                 {
                     $_SESSION["user"] = $user["id"];
-                    $this->redirect("admin");
+                    $this->redirect("home");
                 }
                 else
                 {

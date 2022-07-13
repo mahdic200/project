@@ -53,16 +53,16 @@
                             <?= $post['body'] ?>
 
                             <div class="navigation-wrap justify-content-between d-flex">
-                                <?php if (!empty($nextPost))  {?>
-                                <a class="prev" href="<?= url('show-post/' . $nextPost['id']) ?>">
-                                    <span class="lnr lnr-arrow-right"></span>خبر بعدی
-                                </a>
-                                <?php } 
+                                <?php if (!empty($nextPost)) { ?>
+                                    <a class="prev" href="<?= url('show-post/' . $nextPost['id']) ?>">
+                                        <span class="lnr lnr-arrow-right"></span>خبر بعدی
+                                    </a>
+                                <?php }
                                 if (!empty($previousPost)) { ?>
-                                <a class="next" href="<?= url('show-post/' . $previousPost['id']) ?>">
-                                    خبر قبلی
-                                    <span class="lnr lnr-arrow-left"></span>
-                                </a>
+                                    <a class="next" href="<?= url('show-post/' . $previousPost['id']) ?>">
+                                        خبر قبلی
+                                        <span class="lnr lnr-arrow-left"></span>
+                                    </a>
                                 <?php } ?>
                             </div>
 
@@ -103,12 +103,26 @@
                         </div>
                         <div class="comment-form">
                             <h4>درج نظر جدید</h4>
-                            <form>
-                                <div class="form-group">
-                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="متن نظر" onfocus="this.placeholder = ''" onblur="this.placeholder = 'متن نظر'" required=""></textarea>
-                                </div>
-                                <a href="#" class="primary-btn text-uppercase">ارسال</a>
-                            </form>
+                            <?php if (isset($_SESSION['user'])) { ?>
+                                <form action="<?= url('comment-store') ?>" method="POST">
+                                    <div class="form-group">
+                                        <textarea class="form-control mb-10" rows="5" name="comment" placeholder="متن نظر" onfocus="this.placeholder = ''" onblur="this.placeholder = 'متن نظر'" required=""></textarea>
+                                        <input type="hidden" name="user_id" value="<?= $_SESSION['user'] ?>" style="display: none;">
+                                        <input type="hidden" name="post_id" value="<?= $id ?>" style="display: none;">
+                                    </div>
+                                    <button type="submit" class="primary-btn text-uppercase">ارسال</button>
+                                </form>
+                            <?php } else {?>
+                            <center>
+                                <h4>
+                                    لطفا برای ارسال نظر ابتدا 
+                                    <a href="<?= url('login') ?>">وارد</a>
+                                    سایت شوید یا
+                                    <a href="<?= url("register") ?>">ثبت نام</a>
+                                    کنید .
+                                </h4>
+                            </center>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- End single-post Area -->

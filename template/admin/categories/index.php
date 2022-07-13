@@ -11,6 +11,7 @@
             </a>
     </div>
 </div>
+<?php if (!empty($categories)) { ?>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <caption>List of categories</caption>
@@ -40,6 +41,15 @@
         </tbody>
     </table>
 </div>
+<?php } 
+else{ ?>
+<center>
+    <h1>
+        no category found !
+    </h1>
+    <p>check your database or make a category !</p>
+</center>
+<?php } ?>
 
 
 <?php
