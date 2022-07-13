@@ -4,18 +4,29 @@
             <div class="col-lg-4 col-md-6 single-footer-widget">
                 <h4>اخبار پربازدید</h4>
                 <ul>
-                    <li><a href="#">عنوان خبر</a></li>
-                    <li><a href="#">عنوان خبر</a></li>
-                    <li><a href="#">عنوان خبر</a></li>
-                    <li><a href="#">عنوان خبر</a></li>
+                    <?php 
+                    if (!empty($popularPosts)) {
+                    foreach ($popularPosts as $popularPost) { ?>
+                        <li>
+                            <a href="#">
+                                <?= $popularPost['title'] ?>
+                            </a>
+                        </li>
+                    <?php }} ?>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 single-footer-widget">
                 <h4>لینک سریع</h4>
                 <ul>
-                    <li><a href="#">درباره ما</a></li>
-                    <li><a href="#">تماس با ما</a></li>
-                    <li><a href="#">سوالات متداول</a></li>
+                    <?php 
+                    if (!empty($menus)) {
+                    foreach ($menus as $menu) { ?>
+                    <li>
+                        <a href="#">
+                        <?= $menu['name'] ?>
+                    </a>
+                </li>
+                    <?php }} ?>
                 </ul>
             </div>
             <div class="col-lg-4 col-md-6 single-footer-widget">

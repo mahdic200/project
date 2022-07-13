@@ -22,7 +22,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="image-post.html">
+                            <a href="<?= url('show-post/' . $topSelectedPosts[0]['id']) ?>">
                                 <h3>
                                     <?= $topSelectedPosts[0]['title'] ?>
                                 </h3>
@@ -69,7 +69,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <a href="image-post.html">
+                                <a href="<?= url('show-post/' . $topSelectedPosts[1]['id']) ?>">
                                     <h4>
                                         <?= $topSelectedPosts[1]['title'] ?>
                                     </h4>
@@ -115,7 +115,7 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <a href="image-post.html">
+                                <a href="<?= url('show-post/' . $topSelectedPosts[2]['id']) ?>">
                                     <h4>
                                         <?= $topSelectedPosts[2]['title'] ?>
                                     </h4>
@@ -383,3 +383,4 @@
 
 <!-- start footer Area -->
 <?php require_once BASE_PATH . "/template/app/layouts/footer.php"; ?>
+<!-- end footer Area -->
