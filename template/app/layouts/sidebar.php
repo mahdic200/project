@@ -20,7 +20,7 @@
                         </ul>
                     </div>
                     <div class="details">
-                        <a href="image-post.html">
+                        <a href="<?= url('show-post/' .  $topSelectedPosts[0]['id']) ?>">
                             <h4 class="mt-20">
                                 <?= $topSelectedPosts[0]['title'] ?>
                             </h4>
@@ -68,7 +68,7 @@
                             <img src="<?= asset($mostCommentPost['image']) ?>" alt="">
                         </div>
                         <div class="details">
-                            <a href="image-post.html">
+                            <a href="<?= url('show-post/' . $mostCommentPost['id']) ?>">
                                 <h6>
                                     <?= $mostCommentPost['title'] ?>
                                 </h6>

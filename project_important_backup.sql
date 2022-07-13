@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220709.4e08d2933b
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 03:25 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Host: localhost:3306
+-- Generation Time: May 05, 2022 at 02:27 PM
+-- Server version: 10.6.5-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project`
+-- Database: `metix2_project2`
 --
 
 -- --------------------------------------------------------
@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `banners` (
   `id` int(10) UNSIGNED NOT NULL,
-  `image` text COLLATE utf8_persian_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_persian_ci NOT NULL,
+  `image` text COLLATE utf8mb3_persian_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb3_persian_ci NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -43,10 +43,10 @@ CREATE TABLE `banners` (
 
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(120) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(120) CHARACTER SET utf8mb3 NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 --
 -- Dumping data for table `categories`
@@ -67,11 +67,11 @@ CREATE TABLE `comments` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `post_id` int(10) UNSIGNED NOT NULL,
-  `comment` text COLLATE utf8_persian_ci NOT NULL,
-  `status` enum('unseen','seen','approved') COLLATE utf8_persian_ci NOT NULL DEFAULT 'unseen',
+  `comment` text COLLATE utf8mb3_persian_ci NOT NULL,
+  `status` enum('unseen','seen','approved') COLLATE utf8mb3_persian_ci NOT NULL DEFAULT 'unseen',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -81,12 +81,12 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `menus` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(120) COLLATE utf8_persian_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_persian_ci NOT NULL,
+  `name` varchar(120) COLLATE utf8mb3_persian_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb3_persian_ci NOT NULL,
   `parent_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 --
 -- Dumping data for table `menus`
@@ -105,27 +105,27 @@ INSERT INTO `menus` (`id`, `name`, `url`, `parent_id`, `created_at`, `updated_at
 
 CREATE TABLE `posts` (
   `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(120) COLLATE utf8_persian_ci NOT NULL,
-  `summary` text COLLATE utf8_persian_ci NOT NULL,
-  `body` text CHARACTER SET utf8 NOT NULL,
+  `title` varchar(120) COLLATE utf8mb3_persian_ci NOT NULL,
+  `summary` text COLLATE utf8mb3_persian_ci NOT NULL,
+  `body` text CHARACTER SET utf8mb3 NOT NULL,
   `view` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) UNSIGNED NOT NULL,
   `cat_id` int(11) UNSIGNED NOT NULL,
-  `image` text COLLATE utf8_persian_ci NOT NULL,
-  `status` enum('enable','disable') COLLATE utf8_persian_ci NOT NULL DEFAULT 'disable',
-  `selected` tinyint(4) NOT NULL DEFAULT 2 COMMENT 'selected => 1 \r\nnot selected => 2',
-  `breaking_news` tinyint(4) NOT NULL DEFAULT 2 COMMENT 'selected => 1\r\nnot selected => 2',
+  `image` text COLLATE utf8mb3_persian_ci NOT NULL,
+  `status` enum('enable','disable') COLLATE utf8mb3_persian_ci NOT NULL DEFAULT 'disable',
+  `selected` tinyint(4) NOT NULL DEFAULT 0,
+  `breaking_news` tinyint(4) NOT NULL DEFAULT 0,
   `published_at` datetime NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `summary`, `body`, `view`, `user_id`, `cat_id`, `image`, `status`, `selected`, `breaking_news`, `published_at`, `created_at`, `updated_at`) VALUES
-(2, 'ی پست جدید', '', '', 0, 1, 1, 'public/post-image/2022-07-13-15-23-55.png', 'disable', 2, 1, '2022-07-13 15:23:39', '2022-07-13 17:53:55', '2022-07-13 17:54:10');
+(1, 'پست جدید', '<p>خلاصه</p>\r\n', '<p>یکم بیشتر خلاصه</p>\r\n', 0, 1, 1, 'public/post-image/2022-05-05-13-44-38.png', 'disable', 0, 1, '2022-05-05 13:43:36', '2022-05-05 13:44:38', '2022-05-05 13:46:09');
 
 -- --------------------------------------------------------
 
@@ -135,14 +135,14 @@ INSERT INTO `posts` (`id`, `title`, `summary`, `body`, `view`, `user_id`, `cat_i
 
 CREATE TABLE `setting` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(120) COLLATE utf8_persian_ci DEFAULT NULL,
-  `description` text COLLATE utf8_persian_ci DEFAULT NULL,
-  `keywords` text CHARACTER SET utf8 DEFAULT NULL,
-  `logo` text COLLATE utf8_persian_ci DEFAULT NULL,
-  `icon` text COLLATE utf8_persian_ci DEFAULT NULL,
+  `title` varchar(120) COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `keywords` text CHARACTER SET utf8mb3 DEFAULT NULL,
+  `logo` text COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `icon` text COLLATE utf8mb3_persian_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 --
 -- Dumping data for table `setting`
@@ -159,24 +159,24 @@ INSERT INTO `setting` (`id`, `title`, `description`, `keywords`, `logo`, `icon`,
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `username` varchar(120) CHARACTER SET utf8 NOT NULL,
-  `email` varchar(120) CHARACTER SET utf8 NOT NULL,
-  `password` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `permission` enum('user','admin') CHARACTER SET utf8 NOT NULL DEFAULT 'user',
-  `verify_token` varchar(255) COLLATE utf8_persian_ci DEFAULT NULL,
+  `username` varchar(120) CHARACTER SET utf8mb3 NOT NULL,
+  `email` varchar(120) CHARACTER SET utf8mb3 NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb3 NOT NULL,
+  `permission` enum('user','admin') CHARACTER SET utf8mb3 NOT NULL DEFAULT 'user',
+  `verify_token` varchar(255) COLLATE utf8mb3_persian_ci DEFAULT NULL,
   `is_active` tinyint(4) NOT NULL DEFAULT 0 COMMENT '0 => inactive , 1 => active',
-  `forgot_token` varchar(255) COLLATE utf8_persian_ci DEFAULT NULL,
-  `forgot_token_expire` varchar(255) COLLATE utf8_persian_ci DEFAULT NULL,
+  `forgot_token` varchar(255) COLLATE utf8mb3_persian_ci DEFAULT NULL,
+  `forgot_token_expire` varchar(255) COLLATE utf8mb3_persian_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_persian_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `permission`, `verify_token`, `is_active`, `forgot_token`, `forgot_token_expire`, `created_at`, `updated_at`) VALUES
-(1, 'mahdic200', 'rmahdi170@gmail.com', '$2y$10$QgDhiDUqb3s.mog9VMSMjugOLf1yvTKrKV.Kd0h0YLLW5sgBirP.W', 'admin', 'c3eb96d2b608c3ed4b9dfdff09a79b8117de838f5b7233d71975ccf5cb77f7f4', 1, NULL, NULL, '2022-07-13 17:49:47', NULL);
+(1, 'mahdi', 'e@gmail.com', '12345', 'admin', NULL, 0, NULL, NULL, '2022-05-05 13:42:23', NULL);
 
 --
 -- Indexes for dumped tables
@@ -199,8 +199,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `post_id` (`user_id`),
-  ADD KEY `post_id_comment` (`post_id`);
+  ADD KEY `post_id` (`user_id`);
 
 --
 -- Indexes for table `menus`
@@ -262,7 +261,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -274,7 +273,7 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -285,7 +284,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `post_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_id_comment` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_id2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -305,6 +303,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-

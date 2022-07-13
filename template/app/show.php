@@ -53,8 +53,17 @@
                             <?= $post['body'] ?>
 
                             <div class="navigation-wrap justify-content-between d-flex">
-                                <a class="prev" href="#"><span class="lnr lnr-arrow-right"></span>خبر بعدی</a>
-                                <a class="next" href="#">خبر قبلی<span class="lnr lnr-arrow-left"></span></a>
+                                <?php if (!empty($nextPost))  {?>
+                                <a class="prev" href="<?= url('show-post/' . $nextPost['id']) ?>">
+                                    <span class="lnr lnr-arrow-right"></span>خبر بعدی
+                                </a>
+                                <?php } 
+                                if (!empty($previousPost)) { ?>
+                                <a class="next" href="<?= url('show-post/' . $previousPost['id']) ?>">
+                                    خبر قبلی
+                                    <span class="lnr lnr-arrow-left"></span>
+                                </a>
+                                <?php } ?>
                             </div>
 
                             <div class="comment-sec-area">
@@ -72,7 +81,7 @@
                                                             <div class="desc">
                                                                 <h5>
                                                                     <a href="#">
-                                                                    <?= $comment['username'] ?>
+                                                                        <?= $comment['username'] ?>
                                                                     </a>
                                                                 </h5>
                                                                 <p class="date mt-3">

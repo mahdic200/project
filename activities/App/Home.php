@@ -50,6 +50,13 @@ class Home
         $mostCommentPosts = $db->select("SELECT posts.*, (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) as comments_count, (SELECT username FROM users WHERE users.id = posts.user_id) as username, (SELECT name FROM categories WHERE categories.id = posts.cat_id) as category FROM posts ORDER BY comments_count DESC LIMIT 0,4;")->fetchAll();
 
         $popularPosts = $db->select("SELECT posts.*, (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) as comments_count, (SELECT username FROM users WHERE users.id = posts.user_id) as username, (SELECT name FROM categories WHERE categories.id = posts.cat_id) as category FROM posts ORDER BY view DESC LIMIT 0,3;")->fetchAll();
+        
+        $date = $post['created_at'];
+
+        $nextPost = $db->select("SELECT posts.id, posts.title, posts.created_at FROM posts WHERE created_at > ? ORDER BY created_at ASC LIMIT 0,1 ;",[$date])->fetch();
+
+        $previousPost = $db->select("SELECT posts.id, posts.title, posts.created_at FROM posts WHERE created_at < ? ORDER BY created_at DESC LIMIT 0,1 ;",[$date])->fetch();
+        
         require_once BASE_PATH . "/template/app/show.php";
     }
     public function category($id)

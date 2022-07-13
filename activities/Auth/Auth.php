@@ -129,7 +129,8 @@ class Auth
                     $request["verify_token"] = $randomToken;
                     $request["password"] = $this->hash($request["password"]);
                     $db->insert("users", array_keys($request) , $request);
-                    $this->redirect("login");
+                    flash("register_error", "ایمیل فعالسازی حساب برای  شما ارسال شد");
+                    $this->redirectBack();
                 }
                 else
                 {

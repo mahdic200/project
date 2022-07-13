@@ -188,7 +188,7 @@
                                     </ul>
                                 </div>
                                 <div class="col-lg-7 post-right">
-                                    <a href="image-post.html">
+                                    <a href="<?= url('show-post/' . $lastPost['id']) ?>">
                                         <h4>
                                             <?= $lastPost['title'] ?>
                                         </h4>
@@ -252,7 +252,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <a href="image-post.html">
+                                        <a href="<?= url('show-post/' . $popularPosts[0]['id']) ?>">
                                             <h3>
                                                 <?= $popularPosts[0]['title'] ?>
                                             </h3>
@@ -299,7 +299,7 @@
                                             </ul>
                                         </div>
                                         <div class="details">
-                                            <a href="image-post.html">
+                                            <a href="<?= url('show-post/' . $popularPosts[1]['id']) ?>">
                                                 <h4>
                                                     <?= $popularPosts[1]['title'] ?>
                                                 </h4>
@@ -337,7 +337,7 @@
                                             </ul>
                                         </div>
                                         <div class="details">
-                                            <a href="image-post.html">
+                                            <a href="<?= url('show-post/' . $popularPosts[2]['id']) ?>">
                                                 <h4>
                                                     <?= $popularPosts[2]['title'] ?>
                                                 </h4>

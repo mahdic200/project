@@ -63,7 +63,7 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
                         </td>
                         <td style="width: 25rem;">
                             <a role="button" class="btn btn-sm btn-warning text-dark" style="margin: 5px 0;" href="<?= url("admin/posts/breaking-news/" . $post["id"]); ?>">
-                                <?= ($post["breaking_news"] != 0) ? "remove breaking news" : "add breaking news" ?>
+                                <?= ($post["breaking_news"] != 2) ? "remove breaking news" : "add breaking news" ?>
                             </a>
                             <a role="button" class="btn btn-sm btn-warning text-dark" href="<?= url("admin/posts/selected/" . $post["id"]) ?>">
                                 <?= ($post["selected"] == 1) ? "remove selcted" : "add selected" ?>
