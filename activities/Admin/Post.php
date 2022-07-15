@@ -84,22 +84,17 @@ class Post extends Admin
     public function delete($request)
     {
         $id = $request['id'];
-        $messageForConfirm = ['crud' => 'delete', 'table' => 'posts', 'address' => url('admin/posts/delete/' . $id)];
+        $db = new DataBase();
+        $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
 
-        $confirm = $this->confirmCRUD($messageForConfirm);
-        if ($confirm) {
-            $db = new DataBase();
-            $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
-
-            $imageDelete = $this->removeImage($post["image"]);
-            if ($imageDelete == 'true') {
-                $db->delete("posts", $id);
-                $this->redirect("admin/posts");
-            }
-            else
-            {
-                $this->redirectBack();
-            }
+        $imageDelete = $this->removeImage($post["image"]);
+        if ($imageDelete == 'true') {
+            $db->delete("posts", $id);
+            $this->redirect("admin/posts");
+        }
+        else
+        {
+            $this->redirectBack();
         }
     }
 
