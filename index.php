@@ -217,7 +217,8 @@ uri("admin/posts/create", "Admin\Post", "create");
 uri("admin/posts/store", "Admin\Post", "store", "POST");
 uri("admin/posts/edit/{id}", "Admin\Post", "edit");
 uri("admin/posts/update/{id}", "Admin\Post", "update", "POST");
-uri("admin/posts/delete/{id}", "Admin\Post", "delete");
+uri("admin/posts/confirmDelete/{id}", "Admin\Post", "confirmDelete");
+uri("admin/posts/delete", "Admin\Post", "POST");
 uri("admin/posts/selected/{id}", "Admin\Post", "selected");
 uri("admin/posts/breaking-news/{id}", "Admin\Post", "breakingNews");
 

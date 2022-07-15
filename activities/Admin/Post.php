@@ -70,8 +70,20 @@ class Post extends Admin
             $this->redirect("admin/posts");
         }
     }
-    public function delete($id)
+    public function confirmDelete($id)
     {
+        $db = new DataBase();
+        $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
+        if (empty($post) || $post == null) {
+            $this->redirect('admin/posts');
+        }
+        $message = ['crud' => 'delete', 'table' => 'posts', 'id' => $id, 'address' => 'admin/posts'];
+        require_once BASE_PATH . "/template/admin/confirmCRUD/confirmCRUD.php";
+
+    }
+    public function delete($request)
+    {
+        $id = $request['id'];
         $messageForConfirm = ['crud' => 'delete', 'table' => 'posts', 'address' => url('admin/posts/delete/' . $id)];
 
         $confirm = $this->confirmCRUD($messageForConfirm);
@@ -80,7 +92,7 @@ class Post extends Admin
             $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
 
             $imageDelete = $this->removeImage($post["image"]);
-            if ($imageDelete == 'madi') {
+            if ($imageDelete == 'true') {
                 $db->delete("posts", $id);
                 $this->redirect("admin/posts");
             }
