@@ -24,6 +24,7 @@ class Dashboard extends Admin
 
         $recentComments = $db->select("SELECT comments.id as id, users.username as username, comments.comment as comment, comments.status as 'status' FROM comments LEFT JOIN users ON comments.user_id = users.id ORDER BY comments.id DESC LIMIT 0,5")->fetchAll();
 
+        $pageTitle = "admin dashboard";
         require_once BASE_PATH . "/template/admin/dashboard/index.php";
     }
 }

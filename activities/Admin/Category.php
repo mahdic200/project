@@ -8,6 +8,7 @@ class Category extends Admin
 {
     public function index()
     {
+        $pageTitle = "categories";
         $db = new DataBase();
         $categories = $db->select("SELECT * FROM categories ORDER BY id DESC")->fetchAll();
         // dd($categories);

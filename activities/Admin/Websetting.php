@@ -8,6 +8,7 @@ class Websetting extends Admin
 {
     public function index()
     {
+        $pageTitle = "web settings";
         $db = new DataBase();
         $websetting = $db->select("SELECT * FROM $this->dbname.setting ORDER BY `id` DESC")->fetch();
         require_once BASE_PATH . "/template/admin/websetting/index.php";

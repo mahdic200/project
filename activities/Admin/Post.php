@@ -10,6 +10,7 @@ class Post extends Admin
 {
     public function index()
     {
+        $pageTitle = "posts";
         $dbname = DB_NAME;
         $db = new DataBase();
         $posts = $db->select("SELECT posts.*, users.username as username, categories.name as cat_name FROM ($dbname.posts LEFT JOIN $dbname.users ON posts.user_id = users.id) LEFT JOIN $dbname.categories ON $dbname.posts.cat_id = $dbname.categories.id ORDER BY posts.id DESC");

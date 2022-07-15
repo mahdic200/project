@@ -8,6 +8,7 @@ class Banner extends Admin
 {
     public function index()
     {
+        $pageTitle = "banners";
         $db = new DataBase();
         $banners = $db->select("SELECT * FROM banners");
         require_once BASE_PATH . "/template/admin/banners/index.php";

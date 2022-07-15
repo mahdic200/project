@@ -8,6 +8,7 @@ class User extends Admin
 {
     public function index()
     {
+        $pageTitle = "users";
         $db = new DataBase();
         $users = $db->select("SELECT * FROM " . DB_NAME . ".users ORDER BY `id` DESC");
         require_once BASE_PATH . "/template/admin/users/index.php";

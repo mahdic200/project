@@ -10,6 +10,7 @@ class Home
     {
         $db = new DataBase();
         $setting = $db->select("SELECT * FROM setting")->fetch();
+        $pageTitle = "kosisher";
         $menus = $db->select("SELECT * FROM menus WHERE parent_id IS NULL")->fetchAll();
 
         $topSelectedPosts = $db->select("SELECT posts.*, (SELECT COUNT(*) FROM comments WHERE comments.post_id = posts.id) as comments_count, (SELECT username FROM users WHERE users.id = posts.user_id) as username, (SELECT name FROM categories WHERE categories.id = posts.cat_id) as category FROM posts WHERE posts.selected = 1 ORDER BY created_at DESC LIMIT 0,3;")->fetchAll();
@@ -34,9 +35,12 @@ class Home
     private function userSeen($id)
     {
         $db = new DataBase();
-        if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
+        $user = $db->select("SELECT * FROM users WHERE id = ?;", [$_SESSION['user']])->fetch();
+        if (isset($_SESSION['user']) && $_SESSION['user'] != null && $user != null) {
             $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
-            $users_seen = explode(',', $post['view']);
+            $users_seen = explode(',', $post['users_seen']);
+            $users_seen = array_filter($users_seen);
+            // dd($users_seen);
             foreach ($users_seen as $user_seen) {
                 if ($user_seen == $_SESSION['user']) {
                     return false;

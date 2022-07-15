@@ -8,6 +8,7 @@ class Comment extends Admin
 {
     public function index()
     {
+        $pageTitle = "comments";
         $dbname = DB_NAME;
         $db = new DataBase();
         $comments = $db->select("SELECT comments.*, users.username as username, posts.title as post_title FROM $dbname.comments LEFT JOIN $dbname.users ON $dbname.comments.user_id = $dbname.users.id LEFT JOIN $dbname.posts ON $dbname.comments.post_id = $dbname.posts.id ORDER BY $dbname.comments.id DESC;");

@@ -8,6 +8,7 @@ class Menu extends Admin
 {
     public function index()
     {
+        $pageTitle = "menus";
         $db = new DataBase();
         // $menus = $db->select("SELECT * FROM menus ORDER BY id DESC;");
         $menus = $db->select("SELECT m.*, s.name as parent_name FROM menus m LEFT JOIN menus s ON m.parent_id = s.id;");
