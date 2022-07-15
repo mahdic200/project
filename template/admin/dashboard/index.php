@@ -164,41 +164,52 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
             Most viewed posts
         </h2>
         <div class="table-responsive">
-            <!-- most viewed posts table -->
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>title</th>
-                        <th>view</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-
-                    foreach ($mostViewedPosts as $mostViewedPost) {
-
-                    ?>
+            <?php if ($mostViewedPosts != null) { ?>
+                <!-- most viewed posts table -->
+                <table class="table table-striped table-sm">
+                    <thead>
                         <tr>
-                            <td>
-                                <a class="text-primary" href="">
-                                    <?= $mostViewedPost['id'] ?>
-                                </a>
-                            </td>
-                            <td>
-                                <?= $mostViewedPost['title'] ?>
-                            </td>
-                            <td>
-                                <span class="badge badge-secondary">
-                                    <?= $mostViewedPost['view'] ?>
-                                </span>
-                            </td>
+                            <th>#</th>
+                            <th>title</th>
+                            <th>view</th>
                         </tr>
-                    <?php } ?>
+                    </thead>
+                    <tbody>
+                        <?php
 
-                </tbody>
-            </table>
-            <!-- end of most viewed posts table -->
+                        foreach ($mostViewedPosts as $mostViewedPost) {
+
+                        ?>
+                            <tr>
+                                <td>
+                                    <a class="text-primary" href="">
+                                        <?= $mostViewedPost['id'] ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?= $mostViewedPost['title'] ?>
+                                </td>
+                                <td>
+                                    <span class="badge badge-secondary">
+                                        <?= $mostViewedPost['view'] ?>
+                                    </span>
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+                <!-- end of most viewed posts table -->
+            <?php } else { ?>
+                <center>
+                    <h4 class="mt-5">
+                        found nothing !
+                    </h4>
+                    <p>
+                        check your database or make a post
+                    </p>
+                </center>
+            <?php } ?>
         </div>
     </div>
     <div class="col-4">
@@ -207,41 +218,52 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
 
         </h2>
         <div class="table-responsive">
-            <!-- most commented posts -->
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>title</th>
-                        <th>comment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($mostCommentedPosts as $mostCommentedPost) {
-
-                    ?>
-
+            <?php if ($mostCommentedPosts != null) { ?>
+                <!-- most commented posts -->
+                <table class="table table-striped table-sm">
+                    <thead>
                         <tr>
-                            <td>
-                                <a class="text-primary" href="">
-                                    <?= $mostCommentedPost['id']; ?>
-                                </a>
-                            </td>
-                            <td>
-                                <?= $mostCommentedPost['title']; ?>
-                            </td>
-                            <td>
-                                <span class="badge badge-success">
-                                    <?= $mostCommentedPost['comments_number']; ?>
-                                </span>
-                            </td>
+                            <th>#</th>
+                            <th>title</th>
+                            <th>comment</th>
                         </tr>
-                    <?php } ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($mostCommentedPosts as $mostCommentedPost) {
 
-                </tbody>
-            </table>
-            <!-- end of most commented posts -->
+                        ?>
+
+                            <tr>
+                                <td>
+                                    <a class="text-primary" href="">
+                                        <?= $mostCommentedPost['id']; ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?= $mostCommentedPost['title']; ?>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success">
+                                        <?= $mostCommentedPost['comments_number']; ?>
+                                    </span>
+                                </td>
+                            </tr>
+                        <?php } ?>
+
+                    </tbody>
+                </table>
+                <!-- end of most commented posts -->
+            <?php } else { ?>
+                <center>
+                    <h4 class="mt-5">
+                        found nothing !
+                    </h4>
+                    <p>
+                        check your database or make a post
+                    </p>
+                </center>
+            <?php } ?>
         </div>
     </div>
     <div class="col-4">
@@ -249,43 +271,54 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
             Comments
         </h2>
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>username</th>
-                        <th>comment</th>
-                        <th>status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($recentComments as $recentComment) {
-                    ?>
-
+            <?php if ($recentComments) { ?>
+                <table class="table table-striped table-sm">
+                    <thead>
                         <tr>
-                            <td>
-                                <a class="text-primary" href="">
-                                    <?= $recentComment['id'] ?>
-                                </a>
-                            </td>
-                            <td>
-                                <?= $recentComment['username'] ?>
-                            </td>
-                            <td>
-                                <?= $recentComment['comment'] ?>
-                            </td>
-                            <td>
-                                <span class="badge badge-warning">
-                                <?= $recentComment['status'] ?>
-
-                                </span>
-                            </td>
+                            <th>#</th>
+                            <th>username</th>
+                            <th>comment</th>
+                            <th>status</th>
                         </tr>
-                    <?php  } ?>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($recentComments as $recentComment) {
+                        ?>
 
-                </tbody>
-            </table>
+                            <tr>
+                                <td>
+                                    <a class="text-primary" href="">
+                                        <?= $recentComment['id'] ?>
+                                    </a>
+                                </td>
+                                <td>
+                                    <?= $recentComment['username'] ?>
+                                </td>
+                                <td>
+                                    <?= $recentComment['comment'] ?>
+                                </td>
+                                <td>
+                                    <span class="badge badge-warning">
+                                        <?= $recentComment['status'] ?>
+
+                                    </span>
+                                </td>
+                            </tr>
+                        <?php  } ?>
+
+                    </tbody>
+                </table>
+            <?php } else { ?>
+                <center>
+                    <h4 class="mt-5">
+                        found nothing !
+                    </h4>
+                    <p>
+                        check your database or write a comment
+                    </p>
+                </center>
+            <?php } ?>
         </div>
     </div>
 </div>
