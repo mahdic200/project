@@ -77,12 +77,16 @@ class Post extends Admin
         if (empty($post) || $post == null) {
             $this->redirect('admin/posts');
         }
-        $message = ['crud' => 'delete', 'table' => 'posts', 'id' => $id, 'address' => 'admin/posts'];
+        $message = ['crud' => 'delete', 'table' => 'posts', 'id' => $id, 'address' => 'admin/posts/delete'];
         require_once BASE_PATH . "/template/admin/confirmCRUD/confirmCRUD.php";
 
     }
     public function delete($request)
     {
+        if (!isset($request) || $request == null)
+        {
+            $this->redirect('admin/posts');
+        }
         $id = $request['id'];
         $db = new DataBase();
         $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
@@ -94,7 +98,7 @@ class Post extends Admin
         }
         else
         {
-            $this->redirectBack();
+            $this->redirect('admin/posts');
         }
     }
 

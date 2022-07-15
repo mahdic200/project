@@ -70,7 +70,7 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
                             </a>
                             <hr class="my-1" />
                             <a role="button" class="btn btn-sm btn-primary text-white" href="<?= url("admin/posts/edit/" . $post["id"]) ?>">edit</a>
-                            <a role="button" class="btn btn-sm btn-danger text-white" href="<?= url("admin/posts/delete/" . $post["id"]) ?>">
+                            <a role="button" class="btn btn-sm btn-danger text-white" href="<?= url("admin/posts/confirmDelete/" . $post["id"]) ?>">
                                 delete
                             </a>
                         </td>
