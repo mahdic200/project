@@ -71,12 +71,22 @@ class Post extends Admin
     }
     public function delete($id)
     {
-        $db = new DataBase();
-        $post = $db->select("SELECT * FROM " . DB_NAME . "  .posts WHERE id = ?;", [$id])->fetch();
-        $imageDelete = $this->removeImage($post["image"]);
-        if ($imageDelete) {
-            $db->delete("posts", $id);
-            $this->redirect("admin/posts");
+        $messageForConfirm = ['crud' => 'delete', 'table' => 'posts', 'address' => url('admin/posts/delete/' . $id)];
+
+        $confirm = $this->confirmCRUD($messageForConfirm);
+        if ($confirm) {
+            $db = new DataBase();
+            $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
+
+            $imageDelete = $this->removeImage($post["image"]);
+            if ($imageDelete == 'madi') {
+                $db->delete("posts", $id);
+                $this->redirect("admin/posts");
+            }
+            else
+            {
+                $this->redirectBack();
+            }
         }
     }
 

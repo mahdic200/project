@@ -40,9 +40,20 @@ require_once BASE_PATH ."/template/admin/layouts/header.php";
 
                 </select>
             </div>
-
+                            <center>
+                                <h1>
+                                    this is a test
+                                </h1>
+                            </center>
             <button type="submit" class="btn btn-primary btn-sm">update</button>
+            <input type="submit " value="update">
+            <center>
+                <h1>
+                this is a test
+                </h1>
+            </center>
         </form>
+
     </section>
 </section>
 

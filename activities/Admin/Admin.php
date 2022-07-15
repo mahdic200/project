@@ -65,4 +65,25 @@ class Admin
             return false;
         }
     }
+
+    protected function confirmCRUD($message = ['crud' => 'update/delete', 'table' => 'name', 'id' => 'id', 'address' => 'admin/posts'])
+    {
+        if (isset($request) && array_keys($request)[0] == "confirmCRUD")
+        {
+            $request = flash('confirmCRUD');
+            if ($request != 'true') 
+            {
+                // $this->redirect($message['address']);
+                $this->redirectBack();
+                return false;
+            } else {
+                return true;
+            }
+            
+        }
+        else
+        {
+            require_once BASE_PATH . "/template/admin/confirmCRUD/confirmCRUD.php";
+        }
+    }
 }

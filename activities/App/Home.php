@@ -30,9 +30,32 @@ class Home
 
         require_once BASE_PATH . "/template/app/index.php";
     }
+    // this method gets a post id and auto check users seen that post
+    private function userSeen($id)
+    {
+        $db = new DataBase();
+        if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
+            $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
+            $users_seen = explode(',', $post['view']);
+            foreach ($users_seen as $user_seen) {
+                if ($user_seen == $_SESSION['user']) {
+                    return false;
+                }
+            }
+            array_push($users_seen, $_SESSION['user']);
+            $users_seen = array_filter($users_seen);
+            $users_seen = implode(',', $users_seen);
+            $result = $db->update('posts', $id, ['users_seen', 'view'], [$users_seen, $post['view'] + 1]);
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
     public function show($id)
     {
         $db = new DataBase();
+        $test = $this->userSeen($id);
         $setting = $db->select("SELECT * FROM setting")->fetch();
 
         $menus = $db->select("SELECT * FROM menus WHERE parent_id IS NULL")->fetchAll();
@@ -59,6 +82,7 @@ class Home
 
         require_once BASE_PATH . "/template/app/show.php";
     }
+
     public function category($id)
     {
         $db = new DataBase();
@@ -83,14 +107,11 @@ class Home
     }
     public function commentStore($request)
     {
-        if (isset($_SESSION['user']) && $_SESSION['user'] != null) 
-        {
+        if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
             $db = new DataBase();
-            $db->insert('comments', ['user_id', 'post_id', 'comment'], [$_SESSION['user'] ,$request['post_id'], $request['comment']]);
+            $db->insert('comments', ['user_id', 'post_id', 'comment'], [$_SESSION['user'], $request['post_id'], $request['comment']]);
             $this->redirectBack();
-        } 
-        else 
-        {
+        } else {
             $this->redirect('login');
         }
     }
