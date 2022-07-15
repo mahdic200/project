@@ -80,7 +80,7 @@ class Post extends Admin
             $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
 
             $imageDelete = $this->removeImage($post["image"]);
-            if ($imageDelete == 'madi') {
+            if ($imageDelete == 'true') {
                 $db->delete("posts", $id);
                 $this->redirect("admin/posts");
             }
