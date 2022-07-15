@@ -217,7 +217,8 @@ uri("admin/posts/create", "Admin\Post", "create");
 uri("admin/posts/store", "Admin\Post", "store", "POST");
 uri("admin/posts/edit/{id}", "Admin\Post", "edit");
 uri("admin/posts/update/{id}", "Admin\Post", "update", "POST");
-uri("admin/posts/delete/{id}", "Admin\Post", "delete");
+uri("admin/posts/confirmDelete/{id}", "Admin\Post", "confirmDelete");
+uri("admin/posts/delete", "Admin\Post", 'delete', "POST");
 uri("admin/posts/selected/{id}", "Admin\Post", "selected");
 uri("admin/posts/breaking-news/{id}", "Admin\Post", "breakingNews");
 
@@ -286,7 +287,7 @@ uri('comment-store/', 'App\Home', 'commentStore', 'POST');
 uri('ajax', 'App\Home', 'ajax');
 uri('ajax-php', 'App\Home', 'ajaxphp');
 
-// require_once BASE_PATH . "/error404/index.php";
+require_once BASE_PATH . "/error404/index.php";
 
 
 
