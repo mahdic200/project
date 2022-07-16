@@ -1,5 +1,6 @@
 RewriteEngine On
-RewriteBase /
+RewriteBase /project
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.+)$ project/index.php [QSA,L]
+RewriteRule ^(.+)$ index.php [QSA,L]
+
