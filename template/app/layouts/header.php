@@ -87,7 +87,7 @@
                 <!-- #nav-menu-container -->
                 <div class="navbar-right">
                     <form class="Search">
-                        <input type="text" class="form-control Search-box" name="Search-box" id="Search-box" placeholder="جستجو">
+                        <input type="text" class="form-control Search-box" name="text" id="Search-box" class="thisis" placeholder="جستجو">
                         <label for="Search-box" class="Search-box-label">
                             <span class="lnr lnr-magnifier"></span>
                         </label>
@@ -95,6 +95,9 @@
                             <span class="lnr lnr-cross"></span>
                         </span>
                     </form>
+                        <p id="demo">
+
+                        </p>
                 </div>
             </div>
         </div>

@@ -2,5 +2,6 @@ RewriteEngine On
 RewriteBase /project
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{THE_REQUEST} !/ajax/*.php [NC]
 RewriteRule ^(.+)$ index.php [QSA,L]
 

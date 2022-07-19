@@ -79,6 +79,28 @@
 <script src="<?= asset('/public/app/js/mail-script.js') ?>"></script>
 <script src="<?= asset('/public/app/js/main.js') ?>"></script>
 <script src="<?= asset('/public/app/js/mahdi.js') ?>"></script>
+<script>
+    $(function () {
+    $("#Search-box").keyup(function (e) {
+        $.ajax({
+            type: "GET",
+            url: "http://localhost/project/ajax",
+            data: {
+                text: $("#Search-box").val(),
+            },
+            success: function (response) {
+                $("#demo").text(response);
+            }
+        });
+
+    });
+    $("#Search-box").focusout(function() {
+        $(this).val("");
+        $("#demo").text("");
+    });
+    
+});
+</script>
 </body>
 
 </html>
