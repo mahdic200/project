@@ -106,7 +106,7 @@ class Post extends Admin
     public function selected($id)
     {
         $db = new DataBase();
-        $post = $db->select("SELECT * FROM " . DB_NAME . "  .posts WHERE id = ?;", [$id])->fetch();
+        $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
         if (empty($post)) {
             $this->redirectBack();
         }
@@ -123,7 +123,7 @@ class Post extends Admin
     public function breakingNews($id)
     {
         $db = new DataBase();
-        $post = $db->select("SELECT * FROM " . DB_NAME . "  .posts WHERE id = ?;", [$id])->fetch();
+        $post = $db->select("SELECT * FROM posts WHERE id = ?;", [$id])->fetch();
         // dd($post);
         if (empty($post)) {
             $this->redirectBack();

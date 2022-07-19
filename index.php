@@ -284,8 +284,6 @@ uri('show-post/{id}', 'App\Home', 'show');
 uri('show-category/{id}', 'App\Home', 'category');
 uri('comment-store/', 'App\Home', 'commentStore', 'POST');
 
-uri('ajax', 'App\Home', 'ajax');
-uri('ajax-php', 'App\Home', 'ajaxphp');
 
 require_once BASE_PATH . "/error404/index.php";
 

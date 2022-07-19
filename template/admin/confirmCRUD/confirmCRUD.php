@@ -18,7 +18,7 @@ require_once BASE_PATH . "/template/admin/layouts/header.php";
         <div class="container text-white mt-5 d-inline-flex justify-content-center">
             <form action="<?= url($message['address']) ?>" method="POST">
             <input type="hidden" name="id" value="<?= $message['id'] ?>">
-                <button class="btn danger-color mr-5 h1 text-hov-white">yes</button>
+                <button type="submit" class="btn danger-color mr-5 h1 text-hov-white">yes</button>
             </form>
             <!-- <form action="" method="POST">
             <input type="hidden" name="confirmCRUD" value="false">
